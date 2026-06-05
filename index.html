@@ -146,6 +146,7 @@ body{
 .orb--2{ width:46vmax; height:46vmax; bottom:-16vmax; right:-12vmax; background:radial-gradient(circle,rgba(0,151,220,.20),transparent 68%); }
 .grid-glow{ position:absolute; inset:0; background-image:linear-gradient(rgba(0,48,135,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,48,135,.06) 1px,transparent 1px); background-size:46px 46px; mask-image:radial-gradient(circle at 50% 40%,#000,transparent 72%); -webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 72%); opacity:.6; }
 .shield{ position:absolute; opacity:.06; color:var(--pvi-blue); }
+.brandmark{ position:absolute; opacity:.07; pointer-events:none; user-select:none; filter:saturate(.9); }
 
 /* ============== components ============== */
 .kpis{ display:grid; gap:clamp(.6rem,1.4vw,1rem); }
@@ -217,6 +218,9 @@ body{
 .step__n{ width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,var(--pvi-blue),var(--pvi-cyan)); color:#fff; font-family:var(--font-display); font-weight:800; display:grid; place-content:center; font-size:1.1rem; box-shadow:0 6px 16px rgba(0,48,135,.25); }
 .step h4{ font-family:var(--font-display); color:var(--pvi-blue); font-weight:700; font-size:clamp(.88rem,1.6vw,1.1rem); margin-bottom:.2rem; }
 .step p{ color:var(--ink-600); font-size:var(--small-size); line-height:1.4; }
+.blist{ margin:.3rem 0 0; padding-left:1.15rem; display:flex; flex-direction:column; gap:.24rem; }
+.blist li{ color:var(--ink-600); font-size:var(--small-size); line-height:1.42; }
+.blist li::marker{ color:var(--pvi-cyan); }
 
 /* section divider */
 .divider{ display:flex; flex-direction:column; align-items:flex-start; gap:.6rem; }
@@ -253,6 +257,64 @@ body{
 .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(.8rem,2vw,1.6rem); align-items:center; }
 @media (max-width:860px){ .grid2,.kpis--4{ grid-template-columns:1fr 1fr; } .donut-wrap{ flex-direction:column; } }
 @media (max-width:600px){ .kpis--4,.kpis--3,.cards--3,.cards--2,.grid2{ grid-template-columns:1fr; } }
+
+/* ============================================================
+   MOBILE / PHONE-PORTRAIT — auto-optimize for vertical screens
+   Slides stop being clipped full-screens and become natural-height
+   scrolling sections; all multi-column layouts collapse to 1 column;
+   type is sized to viewport WIDTH so it stays readable on tall screens.
+   ============================================================ */
+@media (max-width:768px){
+  /* free vertical scroll — no forced snap that traps overflowing content */
+  html{ scroll-snap-type:none; -webkit-text-size-adjust:100%; }
+  .slide{ height:auto; min-height:100svh; scroll-snap-align:none; }
+  .slide-content{ overflow:visible; max-height:none;
+    padding:clamp(3rem,8vh,4rem) 1.05rem clamp(1.6rem,6vh,2.6rem); }
+  .wrap{ width:100%; }
+
+  /* size text to screen width, not height */
+  :root{
+    --title-size:clamp(1.5rem,7vw,2.4rem);
+    --h2-size:clamp(1.3rem,6vw,2rem);
+    --h3-size:clamp(1.15rem,5vw,1.6rem);
+    --body-size:clamp(.98rem,4.2vw,1.2rem);
+    --small-size:clamp(.9rem,3.8vw,1.08rem);
+    --content-gap:clamp(.9rem,3.2vw,1.5rem);
+  }
+  .s-title{ font-size:clamp(1.4rem,6.6vw,2.1rem); }
+
+  /* collapse every multi-column layout to a single column */
+  .kpis--4,.kpis--3,.kpis--2,.cards--3,.cards--2,.grid2{ grid-template-columns:1fr!important; }
+  .donut-wrap{ flex-direction:column; text-align:center; gap:1rem; }
+  .donut{ width:clamp(150px,48vw,210px); }
+
+  /* horizontal bars: label on its own line above the bar */
+  .hbar{ grid-template-columns:1fr auto; row-gap:.15rem; }
+  .hbar__l{ grid-column:1 / -1; }
+
+  /* hover transforms feel wrong on touch */
+  .toc__item:hover,.kpi:hover,.card:hover,.step:hover{ transform:none; }
+
+  /* hero / dividers / closing scale down to fit the narrow column */
+  .hero__word{ font-size:clamp(2.8rem,17vw,5rem); }
+  .end__big{ font-size:clamp(2rem,11vw,3.6rem); }
+  .divider__no{ font-size:clamp(3.4rem,26vw,7rem); }
+  .cover .divider__no{ font-size:clamp(3rem,24vw,6.5rem); }
+
+  /* keep nav buttons within thumb reach */
+  .navbtns{ right:.7rem; bottom:1rem; }
+  .brandmark{ opacity:.05; }
+
+  /* CRITICAL: a slide taller than the screen never hits the 0.55 visibility
+     threshold, so its reveal animation never fires. Force all content visible
+     so nothing is ever stuck at opacity:0 on a phone. */
+  .ac-reveal,.ac-pop{ opacity:1!important; transform:none!important; }
+  .ac-bar{ height:var(--h)!important; }
+  .ac-fill-x{ width:var(--w)!important; }
+  .ac-ring-val{ stroke-dashoffset:calc(var(--circ)*(1 - var(--p)))!important; }
+  .lc-path{ stroke-dashoffset:0!important; }
+  .lc-dot{ opacity:1!important; }
+}
 
 .end__big{ font-family:var(--font-display); font-weight:800; font-size:clamp(2.2rem,8vw,5.5rem); line-height:1.05; letter-spacing:-.01em;
   background:linear-gradient(120deg,var(--pvi-indigo),var(--pvi-blue) 45%,var(--pvi-cyan)); background-size:220% 100%;
@@ -383,8 +445,8 @@ body{
   <div class="orb orb--1 ac-drift"></div>
   <div class="orb orb--2 ac-drift" style="animation-delay:-8s"></div>
   <div class="grid-glow"></div>
-  <svg class="shield ac-float" style="top:12%;right:8%;width:120px" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/></svg>
-  <svg class="shield ac-float" style="bottom:14%;left:6%;width:90px;animation-delay:-3s" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/></svg>
+  <img class="brandmark ac-float" src="PVI%20Logo%20(cropped).png" alt="" style="top:10%;right:6%;width:150px" />
+  <img class="brandmark ac-float" src="PVI%20Logo%20(cropped).png" alt="" style="bottom:13%;left:5%;width:120px;animation-delay:-3s" />
 </div>
 
 <!-- rail -->
@@ -618,6 +680,9 @@ body{
         <h4><span class="card__ic">!</span> Nguyên nhân</h4>
         <p>Các kênh hiện hữu giảm giao dịch trong nửa cuối năm; trong khi các dự án TMĐT mới cần đầu tư dài hạn, chưa có doanh thu ngay, dẫn đến kết quả 2025 chỉ đạt <b>64,4%</b> kế hoạch năm.</p>
       </div>
+    </div>
+    <div class="linechart ac-reveal" style="--i:5;margin-top:var(--content-gap)" data-line="tmdt_cum">
+      <div class="s-sub" style="margin-bottom:.4rem;font-weight:600;color:var(--pvi-blue)">Doanh thu lũy kế Thực hiện / Kế hoạch 2025 (triệu VND)</div>
     </div>
   </div></div>
 </section>
@@ -907,11 +972,11 @@ body{
   <div class="slide-content" style="overflow-y:auto;justify-content:flex-start"><div class="wrap">
     <div class="head"><div class="eyebrow ac-reveal">5.1 · Phòng Hàng không Không gian</div><h2 class="s-title ac-reveal" style="--i:1">Giải pháp &amp; Đề xuất - HKKG</h2></div>
     <div class="steps">
-      <div class="step ac-reveal" style="--i:2"><div class="step__n">1</div><div><h4>Mảng kinh doanh bảo hiểm hàng không trong nước</h4><p>Trước áp lực cạnh tranh và biên lợi nhuận suy giảm, Phòng HKKG tiếp tục bám sát khách hàng nhằm gia tăng tỷ lệ đồng bảo hiểm và mở rộng vai trò của Bảo hiểm PVI trong các chương trình hàng không. Đồng thời, đề xuất Tổng công ty hỗ trợ thúc đẩy hợp tác toàn diện với khách hàng, mở rộng sang các sản phẩm bảo hiểm ngoài hàng không nhằm tăng cường tính gắn kết, tạo lợi thế cạnh tranh và nâng cao hiệu quả khai thác. Đề xuất TCT có chính sách hỗ trợ đối tác như ưu tiên sử dụng các dịch vụ hàng không, ưu tiên tiền gửi tại các ngân hàng liên kết với đối tác như HDBank của Vietjet, NCB của Sun Group,…</p></div></div>
+      <div class="step ac-reveal" style="--i:2"><div class="step__n">1</div><div><h4>Mảng kinh doanh bảo hiểm hàng không trong nước</h4><p>Trước áp lực cạnh tranh và biên lợi nhuận suy giảm, Phòng HKKG tiếp tục bám sát khách hàng nhằm gia tăng tỷ lệ đồng bảo hiểm và mở rộng vai trò của Bảo hiểm PVI trong các chương trình hàng không. Đồng thời, đề xuất Tổng công ty hỗ trợ thúc đẩy hợp tác toàn diện với khách hàng, mở rộng sang các sản phẩm bảo hiểm ngoài hàng không nhằm tăng cường tính gắn kết, tạo lợi thế cạnh tranh và nâng cao hiệu quả khai thác.</p></div></div>
       <div class="step ac-reveal" style="--i:3"><div class="step__n">2</div><div><h4>Nhận tái bảo hiểm hàng không Major Risk</h4><p>Hiện nay, theo quy định, Phòng HKKG không nhận các rủi ro thuộc ABC Schedule và duy trì tỷ lệ hợp &lt;90%. Tuy nhiên, với một số rủi ro ABC có tỷ lệ tổn thất thấp, Phòng HKKG đề xuất LĐTCT xem xét mở rộng khai thác trên cơ sở đánh giá nghiệp vụ và trao đổi thông tin với HDI Aviation.</p></div></div>
       <div class="step ac-reveal" style="--i:4"><div class="step__n">3</div><div><h4>Doanh thu và công nợ</h4><p>LĐTCT xem xét cơ chế ghi nhận công nợ / doanh thu từ kênh khai thác qua ALIF cho phép giới hạn công nợ cao hơn nhằm đảm bảo cùng lúc kế hoạch khai thác và chỉ tiêu công nợ theo quy định của TCT.</p></div></div>
-      <div class="step ac-reveal" style="--i:5"><div class="step__n">4</div><div><h4>Kế hoạch tái tục Hợp đồng treaty vào 1/10/2026</h4><p>Nghiên cứu sản phẩm bảo hiểm UAV thương mại (10.000–50.000 USD/chiếc) để triển khai trên quy mô lớn. Khai thác các sản phẩm mới (Cyber Risk, D&amp;O) đối với các khách hàng hiện tại của phòng. Đề xuất LĐ cho phép mở rộng mảng kinh doanh nhận TBH fronting các dịch vụ có hiệu quả tốt với điều kiện Nhà TBH nhận tái fronting từ BHPVI phải có rating tối thiểu từ B++ (AM Best trở lên).</p></div></div>
-      <div class="step ac-reveal" style="--i:6"><div class="step__n">5</div><div><h4>Mở rộng kênh khai thác mới</h4><p>Phòng HKKG đang xây dựng kế hoạch tái tục Treaty hàng không năm 2026/2027 với tiêu chí: Hợp đồng XOL giữ nguyên cơ cấu như hợp đồng hiện tại; Hợp đồng QS tăng năng lực nhận tái lên <b>55 triệu USD</b> để khai thác tiềm năng qua ALIF và gia tăng doanh thu nhận TBH.</p></div></div>
+      <div class="step ac-reveal" style="--i:5"><div class="step__n">4</div><div><h4>Kế hoạch tái tục Hợp đồng treaty vào 1/10/2026</h4><p>Phòng HKKG đang xây dựng kế hoạch tái tục Treaty hàng không năm 2026/2027 với tiêu chí:</p><ul class="blist"><li><b>Hợp đồng XOL</b>: giữ nguyên cơ cấu như hợp đồng hiện tại.</li><li><b>Hợp đồng QS</b>: tăng năng lực nhận tái lên <b>55 triệu USD</b> để khai thác tiềm năng qua ALIF và gia tăng doanh thu nhận TBH.</li></ul></div></div>
+      <div class="step ac-reveal" style="--i:6"><div class="step__n">5</div><div><h4>Mở rộng kênh khai thác mới</h4><ul class="blist"><li>Nghiên cứu sản phẩm bảo hiểm UAV thương mại (10.000–50.000 USD/chiếc) để triển khai trên quy mô lớn.</li><li>Khai thác các sản phẩm mới (Cyber Risk, D&amp;O) đối với các khách hàng hiện tại của phòng.</li><li>Đề xuất LĐ cho phép mở rộng mảng kinh doanh nhận TBH fronting các dịch vụ có hiệu quả tốt với điều kiện Nhà TBH nhận tái fronting từ BHPVI phải có rating tối thiểu từ B++ (AM Best trở lên).</li></ul></div></div>
     </div>
   </div></div>
 </section>
@@ -1090,6 +1155,9 @@ body{
     hkkg_cum:{max:500000,labels:M12,series:[
       {name:'TH lũy kế',color:NAVY,data:[48910,97820,146730,195640,228158,260676,300608,343212,371243,399274,436530,477566]},
       {name:'KH lũy kế',color:RED,data:[41903,83806,125709,167612,195472,223332,257544,294045,318060,342075,373994,409151]}]},
+    tmdt_cum:{max:80000,labels:M12,series:[
+      {name:'TH lũy kế',color:NAVY,data:[4132,7540,11051,14700,18122,22368,26813,30893,33965,37664,41045,45095]},
+      {name:'KH lũy kế',color:RED,data:[3300,6300,9420,12750,16190,20430,26010,32180,40250,49170,58810,70000]}]},
     ptkd_kh:{max:250000,labels:M12,series:[
       {name:"KH'26",color:NAVY,data:[119243,34278,72781,118635,78535,64626,71459,77027,56071,93894,81413,92038]},
       {name:"TH'25",color:CYAN,data:[226261,153776,72004,38850,5127,133096,120268,4819,70014,50468,60761,11705]},
