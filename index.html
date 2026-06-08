@@ -436,7 +436,11 @@ body{
 
 /* khó khăn HKKG: cho phép cuộn dọc nếu text dài */
 .scroll-y{ overflow-y:auto; max-height:100%; padding-right:.4rem; scrollbar-width:thin; }
+
+@keyframes floatIc { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.ic-float { display: inline-block; animation: floatIc 2s ease-in-out infinite; }
 </style>
+
 </head>
 <body>
 
@@ -1057,7 +1061,7 @@ body{
     
     <div class="cards" style="gap:1rem">
       <div class="card card--bad ac-reveal" style="--i:3">
-        <h4>1. Chưa hình thành năng lực triển khai Embedded Insurance ở quy mô doanh nghiệp</h4>
+        <h4><span class="card__ic ic-float">🧩</span> Chưa hình thành năng lực triển khai Embedded Insurance ở quy mô doanh nghiệp</h4>
         <div class="grid2" style="gap:1rem;margin-top:.5rem;align-items:start">
           <div>
             <p><b>Hiện trạng &amp; Hệ quả:</b> Phần lớn cơ hội mới đến từ mô hình nhúng (VNA, XanhSM, MOMO...) hoặc hệ sinh thái đối tác. Tuy nhiên mỗi dự án triển khai riêng (sản phẩm, API, quy trình, báo cáo riêng). Dẫn đến thời gian kéo dài, chi phí cao, khó nhân rộng.</p>
@@ -1071,7 +1075,7 @@ body{
       </div>
       
       <div class="card card--bad ac-reveal" style="--i:4">
-        <h4>2. Chưa sở hữu sản phẩm số chiến lược có khả năng tiếp cận hàng triệu khách hàng</h4>
+        <h4><span class="card__ic ic-float">🚀</span> Chưa sở hữu sản phẩm số chiến lược có khả năng tiếp cận hàng triệu khách hàng</h4>
         <div class="grid2" style="gap:1rem;margin-top:.5rem;align-items:start">
           <div>
             <p><b>Hiện trạng &amp; Hệ quả:</b> Doanh thu chủ yếu từ BH du lịch, sức khỏe, xe cơ giới — phạm vi tiếp cận hạn chế. Tăng trưởng theo từng dự án, chưa có mô hình tăng trưởng dựa trên quy mô khách hàng lớn.</p>
@@ -1101,7 +1105,7 @@ body{
     
     <div class="cards" style="gap:1rem">
       <div class="card card--bad ac-reveal" style="--i:3">
-        <h4>3. Chưa khai thác hiệu quả dữ liệu khách hàng và giá trị vòng đời khách hàng</h4>
+        <h4><span class="card__ic ic-float">📊</span> Chưa khai thác hiệu quả dữ liệu khách hàng và giá trị vòng đời khách hàng</h4>
         <p><b>Hiện trạng:</b> Có nguồn dữ liệu giá trị từ các hệ sinh thái đối tác nhưng phân tán. Chưa khai thác hiệu quả để <i>Cross-sell</i>, <i>Upsell</i>, <i>Remarketing</i> và quản lý hành trình khách hàng (Customer Journey Management).</p>
         <p style="margin-top:.4rem"><b>Tác động:</b> Chi phí tìm khách mới cao. Tỷ lệ tái tục thấp. Chưa tận dụng được lợi thế dữ liệu, hạn chế mở rộng quy mô dài hạn.</p>
         <div class="note note--o" style="margin-top:.6rem">
@@ -1110,7 +1114,7 @@ body{
       </div>
       
       <div class="card card--bad ac-reveal" style="--i:4">
-        <h4>4. Chưa phát huy đầy đủ sức mạnh hệ thống trong phát triển TMĐT</h4>
+        <h4><span class="card__ic ic-float">🤝</span> Chưa phát huy đầy đủ sức mạnh hệ thống trong phát triển TMĐT</h4>
         <p><b>Hiện trạng &amp; Bản chất:</b> Có lợi thế mạng lưới toàn quốc và quan hệ sâu rộng nhưng hoạt động vẫn theo "dự án đơn lẻ". Chưa hình thành cơ chế phối hợp hiệu quả giữa: Đơn vị sở hữu quan hệ tại địa phương, Đơn vị sở hữu năng lực TMĐT, và Đơn vị sở hữu nguồn lực công nghệ/vận hành. Đang có nhiều "mảnh ghép" tốt nhưng chưa cộng hưởng.</p>
         <div class="note note--o" style="margin-top:.6rem">
           <b>Đề xuất định hướng:</b> Xây dựng mô hình <b>"One PVI for Digital Business"</b>.
