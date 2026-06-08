@@ -440,6 +440,11 @@ body{
 @keyframes floatIc { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 .ic-float { display: inline-block; animation: floatIc 2s ease-in-out infinite; }
 
+@media (max-width: 850px) {
+  .cards[style*="2fr 1fr"], .cards--3, .cards--2, .grid2 { grid-template-columns: 1fr !important; }
+  .cards[style*="2fr 1fr"] > div { grid-row: auto !important; }
+}
+
 @media print {
   html, body { height: auto !important; overflow: visible !important; scroll-snap-type: none !important; }
   body { background: #fff !important; }
@@ -794,7 +799,7 @@ body{
         </tbody>
       </table>
     </div>
-    <div class="cards" style="grid-template-columns:1fr 1fr 1fr; gap:1.2rem;">
+    <div class="cards" style="grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.2rem;">
       <div class="card card--ok ac-reveal" style="--i:4; display:flex; align-items:center; gap:0.5rem; padding:1.2rem;">
         <div style="flex:1;">
           <h4 style="color:var(--pvi-blue); font-size:clamp(1rem, 2vw, 1.2rem);">Phòng PTKD</h4>
