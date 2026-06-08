@@ -1022,8 +1022,8 @@ body{
       <div class="step ac-reveal" style="--i:4"><div class="step__n">3</div><div><h4>Nền tảng phát triển sản phẩm thế hệ mới</h4><p>Tạo điều kiện triển khai các mô hình: Bảo hiểm nhúng (Embedded Insurance), Cyber Insurance, UBI, Weather index Insurance.</p></div></div>
       <div class="step ac-reveal" style="--i:5"><div class="step__n">4</div><div><h4>Kênh kết nối hệ sinh thái chiến lược</h4><p>Mở ra cơ hội hợp tác với Ngân hàng, Viễn thông, Hàng không, Bán lẻ, Các cơ quan nhà nước và đơn vị thuộc Bộ, Ban, Ngành.</p></div></div>
       <div class="step ac-reveal" style="--i:6"><div class="step__n">5</div><div><h4>Góp phần xây dựng lợi thế cạnh tranh dài hạn</h4><p>Thông qua hình thành: Hệ sinh thái đối tác số, Dữ liệu khách hàng tập trung, Năng lực bảo hiểm nhúng và Năng lực phát triển sản phẩm số quy mô lớn.</p></div></div>
+      <div class="step ac-reveal" style="--i:7"><div class="step__n">6</div><div><h4>Từng bước chuyển dịch PVI từ doanh nghiệp bảo hiểm truyền thống sang doanh nghiệp bảo hiểm số</h4><p>TMĐT không chỉ là kênh bán hàng mà còn là nền tảng để PVI chuyển đổi mô hình kinh doanh, nâng cao trải nghiệm khách hàng và gia tăng năng lực cạnh tranh trong dài hạn.</p></div></div>
     </div>
-    <div class="note note--o ac-reveal" style="--i:7;margin-top:var(--content-gap)"><b>6. Từng bước chuyển dịch PVI từ doanh nghiệp bảo hiểm truyền thống sang doanh nghiệp bảo hiểm số:</b> TMĐT không chỉ là kênh bán hàng mà còn là nền tảng để PVI chuyển đổi mô hình kinh doanh, nâng cao trải nghiệm khách hàng và gia tăng năng lực cạnh tranh trong dài hạn.</div>
   </div></div>
 </section>
 
@@ -1351,11 +1351,18 @@ body{
   const cur=document.getElementById('cur'); const tot=document.getElementById('tot');
   tot.textContent=String(slides.length).padStart(2,'0');
 
+  const nav=document.createElement('nav');
+  nav.style.margin = 'auto 0';
+  nav.style.display = 'flex';
+  nav.style.flexDirection = 'column';
+  nav.style.gap = '.1rem';
+  rail.appendChild(nav);
+
   // brand head
   const brand=document.createElement('div'); brand.className='rail__brand';
   brand.innerHTML=`<img class='pvi-logo' src='PVI%20Logo%20(cropped).png' alt='Bảo hiểm PVI' />`;
-  rail.appendChild(brand);
-  const sub=document.createElement('div'); sub.className='rail__sub'; sub.textContent='Ban HK & KHDN · 2025–2026'; rail.appendChild(sub);
+  nav.appendChild(brand);
+  const sub=document.createElement('div'); sub.className='rail__sub'; sub.textContent='Ban HK & KHDN · 2025–2026'; nav.appendChild(sub);
 
   let currentGroupIdx = 0;
   let groupCount = 0;
@@ -1368,7 +1375,7 @@ body{
       const it=document.createElement('div'); it.className='rail__item'; it.dataset.idx=idx;
       it.innerHTML=`<span class="dot"></span><span class="rail__num">${String(groupCount).padStart(2,'0')}</span><span>${title}</span>`;
       it.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'}));
-      rail.appendChild(it);
+      nav.appendChild(it);
     }
     s.dataset.groupIdx = currentGroupIdx;
   });
