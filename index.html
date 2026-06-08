@@ -248,8 +248,8 @@ body{
 .toc{ display:flex; flex-direction:column; gap:clamp(.5rem,1.4vh,1rem); }
 .toc__item{ display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; background:#fff; border:1px solid var(--ac-line); border-radius:14px; padding:clamp(.7rem,1.6vw,1.1rem) clamp(.9rem,2vw,1.4rem); box-shadow:0 10px 28px rgba(0,48,135,.06); transition:transform .3s, box-shadow .3s, border-color .3s; cursor:pointer; }
 .toc__item:hover{ transform:translateX(8px); box-shadow:0 18px 40px rgba(0,48,135,.14); border-color:var(--pvi-cyan); }
-.toc__no{ font-family:var(--font-display); font-weight:800; font-size:clamp(1.4rem,3.2vw,2.4rem); color:var(--pvi-cyan); min-width:1.6em; }
-.toc__t{ font-family:var(--font-display); font-weight:700; color:var(--pvi-blue); font-size:clamp(.95rem,1.9vw,1.4rem); }
+.toc__no{ font-family:var(--font-display); font-weight:800; font-size:clamp(1.8rem,4vw,3.2rem); color:var(--pvi-cyan); min-width:1.6em; }
+.toc__t{ font-family:var(--font-display); font-weight:700; color:var(--pvi-blue); font-size:clamp(1.2rem,2.5vw,1.8rem); }
 
 .note{ font-size:var(--small-size); color:var(--ink-700); background:rgba(0,151,220,.08); border:1px dashed rgba(0,151,220,.4); border-radius:12px; padding:.7rem 1rem; }
 .note--g{ color:var(--green); background:rgba(46,125,50,.08); border-color:rgba(46,125,50,.4); }
@@ -439,6 +439,25 @@ body{
 
 @keyframes floatIc { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 .ic-float { display: inline-block; animation: floatIc 2s ease-in-out infinite; }
+
+@media print {
+  body { background: #fff !important; }
+  .slide { 
+    height: 100vh !important; 
+    page-break-after: always !important;
+    overflow: hidden !important; 
+    position: relative !important;
+  }
+  .slide-content { max-height: 100vh !important; }
+  .rail, .navbtns, .counter, .progress, .hint, .ambient { display: none !important; }
+  .ac-reveal, .ac-pop { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .ac-bar { height: var(--h) !important; transition: none !important; }
+  .ac-fill-x { width: var(--w) !important; transition: none !important; }
+  .pie-slice { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .lc-path { stroke-dashoffset: 0 !important; animation: none !important; }
+  .lc-dot { opacity: 1 !important; animation: none !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
 </style>
 
 </head>
@@ -530,25 +549,8 @@ body{
       <div class="kpi kpi--cyan ac-pop" style="--i:2"><span class="kpi__v">477,6 tỷ</span><span class="kpi__l">Phòng HKKG</span><span class="tag tag--g">117,9% KH</span></div>
       <div class="kpi kpi--red ac-pop" style="--i:3"><span class="kpi__v">45,1 tỷ</span><span class="kpi__l">Phòng TMĐT</span><span class="tag tag--r">64,4% KH</span></div>
     </div>
-    <div class="chart ac-reveal" style="--i:4">
-      <div class="s-sub" style="margin-bottom:.7rem;font-weight:600;color:var(--pvi-blue)">Cơ cấu Doanh thu: BH Gốc / Nhận TBH - 2025 (tỷ VND)</div>
-      <div class="hbars">
-        <div class="hbar ac-reveal" style="--i:5"><span class="hbar__l">Toàn Ban</span><div class="hbar__track" style="display:flex;border-radius:8px"><div class="hbar__fill ac-fill-x" style="--w:47.5%;background:linear-gradient(90deg,var(--pvi-blue),#00205c);border-radius:0"></div><div class="hbar__fill ac-fill-x" style="--w:52.5%;background:linear-gradient(90deg,var(--pvi-cyan),#0079b3);border-radius:0"></div></div><span class="hbar__v">1.469,8</span></div>
-        <div class="hbar ac-reveal" style="--i:6"><span class="hbar__l">PTKD</span><div class="hbar__track" style="display:flex;border-radius:8px"><div class="hbar__fill ac-fill-x" style="--w:21.5%;background:linear-gradient(90deg,var(--pvi-blue),#00205c);border-radius:0"></div><div class="hbar__fill ac-fill-x" style="--w:42.9%;background:linear-gradient(90deg,var(--pvi-cyan),#0079b3);border-radius:0"></div></div><span class="hbar__v">947,1</span></div>
-        <div class="hbar ac-reveal" style="--i:7"><span class="hbar__l">HKKG</span><div class="hbar__track" style="display:flex;border-radius:8px"><div class="hbar__fill ac-fill-x" style="--w:23.0%;background:linear-gradient(90deg,var(--pvi-blue),#00205c);border-radius:0"></div><div class="hbar__fill ac-fill-x" style="--w:9.5%;background:linear-gradient(90deg,var(--pvi-cyan),#0079b3);border-radius:0"></div></div><span class="hbar__v">477,6</span></div>
-        <div class="hbar ac-reveal" style="--i:8"><span class="hbar__l">TMĐT</span><div class="hbar__track" style="display:flex;border-radius:8px"><div class="hbar__fill ac-fill-x" style="--w:3.1%;background:linear-gradient(90deg,var(--pvi-blue),#00205c);border-radius:0"></div></div><span class="hbar__v">45,1</span></div>
-      </div>
-      <div class="legend" style="margin-top:.8rem"><span><i style="width:14px;height:14px;border-radius:4px;background:linear-gradient(180deg,var(--pvi-blue),#00205c)"></i>BH Gốc · 698,8 tỷ</span><span><i style="width:14px;height:14px;border-radius:4px;background:linear-gradient(180deg,var(--pvi-cyan),#0079b3)"></i>Nhận TBH · 771,0 tỷ</span></div>
-    </div>
-  </div></div>
-</section>
-
-<!-- ===== S4 DT 2025 vs KH ===== -->
-<section class="slide" data-title="DT 2025 vs Kế hoạch">
-  <div class="slide-content"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">01 · Kết quả kinh doanh 2025</div><h2 class="s-title ac-reveal" style="--i:1">Doanh thu 2025 - so sánh với Kế hoạch 2025</h2><span class="unit ac-reveal" style="--i:2">Đơn vị: tỷ VND</span></div>
     <div class="grid2" style="align-items:start">
-      <div class="tbl-scroll ac-reveal" style="--i:3">
+      <div class="tbl-scroll ac-reveal" style="--i:4">
       <table class="tbl">
         <thead><tr><th>Phòng</th><th>DT Gốc</th><th>Nhận TBH</th><th>Tổng</th><th>KH 2025</th><th>Tỷ lệ HT%</th></tr></thead>
         <tbody>
@@ -559,7 +561,7 @@ body{
         </tbody>
       </table>
       </div>
-      <div class="chart ac-reveal" style="--i:4">
+      <div class="chart ac-reveal" style="--i:5">
         <div class="s-sub" style="margin-bottom:.6rem;font-weight:600;color:var(--pvi-blue)">Cơ cấu doanh thu Toàn Ban 2025</div>
         <div class="pie-wrap">
           <svg class="pie" viewBox="0 0 120 120" aria-label="Tỷ trọng Gốc Tái">
@@ -573,7 +575,7 @@ body{
         </div>
       </div>
     </div>
-    <div class="note note--g ac-reveal" style="--i:5;margin-top:var(--content-gap)">✔ Toàn Ban vượt 389,8 tỷ so kế hoạch 2025. P.PTKD bứt phá 156,6% nhờ dịch vụ nhận TBH fronting quốc tế; P.HKKG vượt 117,9%; P.TMĐT đạt 64,4% so với kế hoạch.</div>
+    <div class="note note--g ac-reveal" style="--i:6;margin-top:var(--content-gap)">✔ Toàn Ban vượt 389,8 tỷ so kế hoạch 2025. P.PTKD bứt phá 156,6% nhờ dịch vụ nhận TBH fronting quốc tế; P.HKKG vượt 117,9%; P.TMĐT đạt 64,4% so với kế hoạch.</div>
   </div></div>
 </section>
 
@@ -587,26 +589,7 @@ body{
   </div></div>
 </section>
 
-<!-- ===== S5 DT theo tháng 2025 ===== -->
-<section class="slide" data-title="Doanh thu theo tháng 2025">
-  <div class="slide-content"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">02 · Kết quả từng Phòng</div><h2 class="s-title ac-reveal" style="--i:1">Doanh thu theo tháng 2025 - Gốc / Nhận tái</h2><span class="unit ac-reveal" style="--i:2">Đơn vị: tỷ VND · Tổng năm 1.469,8 tỷ</span></div>
-    <div class="chart ac-reveal" style="--i:3">
-      <div class="bars" id="bars2025"></div>
-      <div class="legend"><span><i style="background:linear-gradient(180deg,var(--pvi-blue),#00205c)"></i>BH Gốc · 698,8 tỷ</span><span><i style="background:linear-gradient(180deg,var(--pvi-cyan),#0079b3)"></i>Nhận TBH · 771,0 tỷ</span></div>
-    </div>
-    <div class="tbl-scroll ac-reveal" style="--i:4;margin-top:var(--content-gap)">
-      <table class="tbl tbl--mini">
-        <thead><tr><th>Tháng</th><th>T1</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th><th>T8</th><th>T9</th><th>T10</th><th>T11</th><th>T12</th><th>Tổng</th></tr></thead>
-        <tbody>
-          <tr><td>BH Gốc</td><td>92,4</td><td>58,8</td><td>61,3</td><td>58,5</td><td>37,8</td><td>72,7</td><td>86,4</td><td>34,0</td><td>57,4</td><td>53,3</td><td>49,3</td><td>37,4</td><td>698,8</td></tr>
-          <tr><td>Nhận TBH</td><td>155,0</td><td>104,1</td><td>79,0</td><td>30,4</td><td>40,2</td><td>97,1</td><td>114,0</td><td>7,3</td><td>49,4</td><td>34,6</td><td>48,9</td><td>10,5</td><td>771,0</td></tr>
-          <tr class="total"><td>Tổng</td><td>247,4</td><td>162,9</td><td>140,3</td><td>88,9</td><td>78,1</td><td>169,7</td><td>200,4</td><td>41,2</td><td>106,8</td><td>87,9</td><td>98,2</td><td>47,9</td><td>1.469,8</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div></div>
-</section>
+
 
 <!-- ===== S6 PTKD 2025 ===== -->
 <section class="slide" data-title="Phòng PTKD 2025">
@@ -705,7 +688,7 @@ body{
 <!-- ===== S9 KH 2026 toàn Ban ===== -->
 <section class="slide" data-title="Kế hoạch DT 2026">
   <div class="slide-content"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">03 · Kế hoạch doanh thu 2026</div><h2 class="s-title ac-reveal" style="--i:1">Kế hoạch doanh thu năm 2026 - Toàn Ban</h2><span class="unit ac-reveal" style="--i:2">Đơn vị: tỷ VND</span></div>
+    <div class="head"><div class="eyebrow ac-reveal">03 · Kế hoạch doanh thu 2026</div><h2 class="s-title ac-reveal" style="--i:1">03 · Kế hoạch – Thực hiện 2026</h2><span class="unit ac-reveal" style="--i:2">Đơn vị: tỷ VND</span></div>
     <div class="kpis kpis--4" style="margin-bottom:var(--content-gap)">
       <div class="kpi ac-pop" style="--i:0"><span class="kpi__v">1.582 tỷ</span><span class="kpi__l">KH 2026 - Toàn Ban</span><span class="tag tag--g">+7,6% so TH 2025</span></div>
       <div class="kpi kpi--cyan ac-pop" style="--i:1"><span class="kpi__v">805,0 tỷ</span><span class="kpi__l">DT Gốc</span><span class="tag tag--b">50,9%</span></div>
@@ -759,28 +742,11 @@ body{
 <section class="slide" data-title="TH 6T theo Phòng">
   <div class="slide-content"><div class="wrap">
     <div class="head"><div class="eyebrow ac-reveal">03 · Kế hoạch – Thực hiện 2026</div><h2 class="s-title ac-reveal" style="--i:1">Thực hiện 6T 2026 - theo Phòng &amp; cơ cấu Gốc / Tái</h2><span class="unit ac-reveal" style="--i:2">Đơn vị: triệu VND</span></div>
-    <div class="grid2" style="align-items:start">
-      <div class="tbl-scroll ac-reveal" style="--i:3">
-      <table class="tbl">
-        <thead><tr><th>Phòng</th><th>BH Gốc</th><th>Nhận TBH</th><th>Tổng</th></tr></thead>
-        <tbody>
-          <tr><td>PTKD</td><td>262.593</td><td>396.823</td><td>659.416</td></tr>
-          <tr><td>HKKG</td><td>154.915</td><td>72.306</td><td>227.221</td></tr>
-          <tr><td>TMĐT</td><td>26.221</td><td>0</td><td>26.221</td></tr>
-          <tr class="total"><td>Tổng</td><td>443.729</td><td>469.129</td><td>912.858</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <div class="chart ac-reveal" style="--i:4">
-        <div class="s-sub" style="margin-bottom:.5rem;font-weight:600;color:var(--pvi-blue)">Thực hiện theo tháng - Gốc / Nhận TBH (tỷ VND)</div>
-        <div class="bars" data-stack="th6t_stack"></div>
-        <div class="legend"><span><i style="background:linear-gradient(180deg,var(--pvi-blue),#00205c)"></i>BH Gốc</span><span><i style="background:linear-gradient(180deg,var(--pvi-cyan),#0079b3)"></i>Nhận TBH</span></div>
-      </div>
-    </div>
-    <div class="cards cards--3" style="margin-top:var(--content-gap)">
-      <div class="card card--ok ac-reveal" style="--i:4"><h4>PTKD</h4><p>TH <b>659,4 tỷ</b> · KH 488,1 tỷ → <b class="pos">135,1%</b></p></div>
-      <div class="card card--ok ac-reveal" style="--i:5"><h4>HKKG</h4><p>TH <b>227,2 tỷ</b> · KH 221,9 tỷ → <b class="pos">102,4%</b></p></div>
-      <div class="card card--ok ac-reveal" style="--i:6"><h4>TMĐT</h4><p>TH <b>26,2 tỷ</b> · KH 22,7 tỷ → <b class="pos">115,7%</b></p></div>
+    <div class="cards" style="grid-template-columns:1fr 1fr; gap:1rem; margin-top:var(--content-gap);">
+      <div class="card card--ok ac-reveal" style="--i:3"><h4>Phòng PTKD</h4><ul class="blt"><li>Kết quả số tuyệt đối: <b>659,4 tỷ VND</b></li><li>Tỷ lệ hoàn thành: <b class="pos">135,1%</b></li></ul></div>
+      <div class="card card--ok ac-reveal" style="--i:4"><h4>Phòng HKKG</h4><ul class="blt"><li>Kết quả số tuyệt đối: <b>227,2 tỷ VND</b></li><li>Tỷ lệ hoàn thành: <b class="pos">102,4%</b></li></ul></div>
+      <div class="card card--ok ac-reveal" style="--i:5"><h4>Phòng TMĐT</h4><ul class="blt"><li>Kết quả số tuyệt đối: <b>26,2 tỷ VND</b></li><li>Tỷ lệ hoàn thành: <b class="pos">115,7%</b></li></ul></div>
+      <div class="card card--ok ac-reveal" style="--i:6"><h4>Tổng Ban</h4><ul class="blt"><li>Kết quả số tuyệt đối: <b>912,8 tỷ VND</b></li><li>Tỷ lệ hoàn thành: <b class="pos">124,6%</b></li></ul></div>
     </div>
   </div></div>
 </section>
@@ -799,24 +765,23 @@ body{
 <section class="slide" data-title="Khó khăn PTKD">
   <div class="slide-content"><div class="wrap">
     <div class="head"><div class="eyebrow ac-reveal">4.1 · Phòng Phát triển kinh doanh</div><h2 class="s-title ac-reveal" style="--i:1">Khó khăn &amp; Thách thức - PTKD</h2></div>
-    <div class="cards cards--3">
-      <div class="card card--warn ac-reveal scroll-y" style="--i:2"><h4><span class="card__ic">🛡</span> 1. Kinh doanh bảo hiểm gốc</h4>
+    <div class="cards" style="grid-template-columns:1fr 1fr; gap:1rem;">
+      <div class="card card--warn ac-reveal scroll-y" style="--i:2"><h4><span class="card__ic">🛡</span> 1. Đối với mảng kinh doanh bảo hiểm gốc:</h4>
         <ul class="blt">
-          <li>Cạnh tranh khốc liệt từ DBV, TCGI, Opes... chạy đua hạ phí hoặc tăng chi phí trên đơn.</li>
-          <li>CTBH đẩy mức hỗ trợ hợp lệ (PCCC tăng 10%, cá biệt 17-18%). Các nghiệp vụ chưa có biểu phí bắt buộc thì giảm phí, chào phí không cần hiệu quả, bù phí để giành dịch vụ.</li>
-          <li>Các CTBH hậu thuẫn từ ngân hàng (MIC, BIC, VBI, TCGI...) triệt để khai thác tệp KH. Khách hàng điều chỉnh cơ cấu vốn vay dẫn đến PVI mất lợi thế.</li>
-          <li>Dự án đầu tư công 2026 khởi sắc nhưng áp dụng chỉ định thầu cho đối tác quen, hạn chế khả năng tham gia của PVI.</li>
+          <li>Thị trường bảo hiểm phi nhân thọ gần đây chứng kiến sự gia nhập/tái cấu trúc của hàng loạt CTBH như DBV, TCGI, Opes... khiến mức độ cạnh tranh trong thị trường ngày càng khốc liệt. Các CTBH đều lao vào cuộc đua hạ phí bảo hiểm hoặc tăng chi phí trên đơn. Mặc dù tình huống hạ phí bảo hiểm thấp hơn quy định (đối với bảo hiểm tài sản và xây dựng bắt buộc) hiện nay không còn diễn ra thường xuyên, nhưng ngược lại nhiều CTBH chấp nhận nâng các mức hỗ trợ hợp lệ cho khách hàng lên tối đa, ví dụ như chi phí hỗ trợ PCCC hiện đã tăng lên khoảng 10%, có những trường hợp cá biệt lên đến 17-18%.... Còn đối với các nghiệp vụ bảo hiểm chưa có biểu phí bắt buộc của BTC, thị trường vẫn duy trì xu hướng giảm phí, các CTBH đối thủ đều đang đẩy mạnh cạnh tranh bằng cách chào phí không cần hiệu quả, thậm chí chấp nhận bù phí để dành được dịch vụ, đề xuất khách hàng mức phí fronting thấp...</li>
+          <li>Những CTBH có hậu thuẫn từ các ngân hàng lớn (MIC, BIC, VBI, TCGI...) đều triệt để khai thác danh mục khách hàng của ngân hàng. Trong nhiều trường hợp việc khách hàng điều chỉnh cơ cấu vốn vay của họ đã dẫn đến việc PVI bị mất các khách hàng hiện hữu hoặc mất lợi thế cạnh tranh trong nhiều dự án/dịch vụ.</li>
+          <li>Các dự án đầu tư công năm 2026 có nhiều tín hiệu khởi sắc, tuy nhiên, nhiều dự án áp dụng chính sách chỉ định thầu cho các đối tác quen thuộc, việc này hạn chế khả năng tham gia PVI.</li>
         </ul>
       </div>
-      <div class="card card--bad ac-reveal" style="--i:3"><h4><span class="card__ic">🌐</span> 2. Nhận tái bảo hiểm quốc tế</h4>
+      <div class="card card--bad ac-reveal" style="--i:3"><h4><span class="card__ic">🌐</span> 2. Đối với mảng kinh doanh nhận tái bảo hiểm quốc tế:</h4>
         <ul class="blt">
-          <li>Chủ động không tái tục nhận TBH fronting cho Aquilano qua WTW SGP, dẫn đến sụt giảm 147 tỷ DT và không thu xếp chương trình thay thế.</li>
-          <li>Dịch vụ nhận TBH fronting BMC/EAI áp dụng nhiều yêu cầu chặt chẽ, giảm mức trách nhiệm nhiều nghiệp vụ để đảm bảo an toàn &amp; danh tiếng.</li>
+          <li>Năm 2026, Ban HK&amp;KHDN đã chủ động không tái tục dịch vụ nhận TBH fronting cho Aquilano qua WTW SGP, dẫn đến sụt giảm 147 tỷ doanh thu và không thu xếp chương trình thay thế.</li>
+          <li>Dịch vụ tái tục nhận TBH fronting cho đối tác BMC/EAI áp dụng nhiều yêu cầu chặt chẽ và hạn chế để đảm bảo tính an toàn và danh tiếng của PVI đồng thời giảm mức trách nhiệm của nhiều nghiệp vụ bảo hiểm</li>
         </ul>
       </div>
-      <div class="card card--warn ac-reveal" style="--i:4"><h4><span class="card__ic">👥</span> 3. Nhân sự &amp; Quản trị</h4>
+      <div class="card card--warn ac-reveal" style="grid-column:1/-1; --i:4"><h4><span class="card__ic">👥</span> 3. Đối với vấn đề nhân sự và quản trị:</h4>
         <ul class="blt">
-          <li>Nhân sự hiện tại của phòng khá mỏng so với khối lượng công việc và doanh thu được giao.</li>
+          <li>Nhân sự hiện tại của các phòng khá mỏng so với khối lượng công việc và doanh thu được giao.</li>
         </ul>
       </div>
     </div>
@@ -911,20 +876,20 @@ body{
 <!-- ===== S18 GIẢI PHÁP TMĐT ===== -->
 <section class="slide" data-title="Giải pháp TMĐT 6T">
   <div class="slide-content" style="overflow-y:auto;justify-content:flex-start"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">4.3 · Phòng Thương mại điện tử</div><h2 class="s-title ac-reveal" style="--i:1">Giải pháp &amp; Định hướng 6 tháng cuối năm</h2></div>
+    <div class="head"><div class="eyebrow ac-reveal">4.3 · Phòng Thương mại điện tử</div><h2 class="s-title ac-reveal" style="--i:1">Giải pháp &amp; Đề xuất 6 tháng cuối năm</h2></div>
     <div class="cards cards--3" style="gap:.7rem;margin-bottom:var(--content-gap)">
-      <div class="card card--ok ac-reveal" style="--i:2"><h4><span class="card__ic">⚡</span> 1. Đẩy nhanh các dự án trọng điểm</h4><p>Giảm phụ thuộc vào các kênh truyền thống, tạo doanh thu mới 6 tháng cuối năm. Tập trung:</p><ul class="blt"><li>Sun Phu Quoc Airways, Sun Group, GTEL.</li><li>BH TNDS BB qua cửa khẩu.</li><li>Các Cục nghiệp vụ BCA: C08, A05, A08…</li></ul></div>
+      <div class="card card--ok ac-reveal" style="--i:2"><h4><span class="card__ic">⚡</span> 1. Đẩy nhanh các dự án trọng điểm</h4><p>Giảm phụ thuộc vào các kênh truyền thống, tạo doanh thu mới 6 tháng cuối năm. Tập trung:</p><ul class="blt"><li>Sun PhuQuoc Airways, Sun Group, GTEL.</li><li>BH TNDS BB qua cửa khẩu.</li><li>Các Cục nghiệp vụ BCA: C08, A05, A08…</li></ul></div>
       <div class="card card--ok ac-reveal" style="--i:3"><h4><span class="card__ic">💡</span> 2. Phát triển sản phẩm mới</h4><p>Nghiên cứu cơ hội mới đảm bảo nguồn thu 2027-2028:</p><ul class="blt"><li>Bảo hiểm nhúng trên hệ sinh thái số.</li><li>Bảo hiểm Cyber doanh nghiệp.</li><li>Bảo hiểm du lịch khách quốc tế.</li><li>Bảo hiểm chỉ số thời tiết.</li></ul></div>
       <div class="card card--ok ac-reveal" style="--i:4"><h4><span class="card__ic">⚙</span> 3. Chuẩn hóa mô hình triển khai</h4><p>Xây dựng quy chuẩn rút ngắn thời gian go-live:</p><ul class="blt"><li>Bộ tài liệu chuẩn, API chuẩn.</li><li>Quy trình tích hợp chuẩn.</li><li>Bộ hồ sơ sản phẩm chuẩn.</li></ul></div>
     </div>
-    <div class="note note--g ac-reveal" style="--i:5"><b>Kết luận Phần II:</b> Mặc dù đối mặt với nhiều thách thức từ thị trường và tiến độ, Phòng TMĐT vẫn đang chủ động chuyển dịch từ mô hình tăng trưởng dựa trên các kênh truyền thống sang mô hình tăng trưởng dựa trên hệ sinh thái số, bảo hiểm nhúng và các sản phẩm thế hệ mới nhằm tạo nền tảng tăng trưởng bền vững cho giai đoạn 2026–2030.</div>
+    <div class="note note--g ac-reveal" style="--i:5"><b>Kết luận:</b> Mặc dù đối mặt với nhiều thách thức từ thị trường và tiến độ, Phòng TMĐT vẫn đang chủ động chuyển dịch từ mô hình tăng trưởng dựa trên các kênh truyền thống sang mô hình tăng trưởng dựa trên hệ sinh thái số, bảo hiểm nhúng và các sản phẩm thế hệ mới nhằm tạo nền tảng tăng trưởng bền vững cho giai đoạn 2026–2030.</div>
   </div></div>
 </section>
 
 <!-- ===== S19 YẾU TỐ TRỌNG YẾU 1&2 ===== -->
 <section class="slide" data-title="Tháo gỡ nền tảng (1)">
   <div class="slide-content" style="overflow-y:auto;justify-content:flex-start"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">4.3 · Phòng Thương mại điện tử</div><h2 class="s-title ac-reveal" style="--i:1">4 định hướng để xây dựng nền tảng TMĐT PVI bền vững và tăng trưởng (1/2)</h2><span class="unit ac-reveal" style="--i:2">Góc nhìn phát triển dài hạn</span></div>
+    <div class="head"><div class="eyebrow ac-reveal">4.4. ĐỊNH HƯỚNG CỦA BAN HK&amp;KHDN</div><h2 class="s-title ac-reveal" style="--i:1">4 định hướng để xây dựng nền tảng TMĐT PVI bền vững và tăng trưởng (1/2)</h2><span class="unit ac-reveal" style="--i:2">Góc nhìn phát triển dài hạn</span></div>
     
     <div class="cards" style="gap:1rem">
       <div class="card card--bad ac-reveal" style="--i:3">
@@ -968,7 +933,7 @@ body{
 <!-- ===== S20 YẾU TỐ TRỌNG YẾU 3&4 ===== -->
 <section class="slide" data-title="Tháo gỡ nền tảng (2)">
   <div class="slide-content" style="overflow-y:auto;justify-content:flex-start"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">4.3 · Phòng Thương mại điện tử</div><h2 class="s-title ac-reveal" style="--i:1">4 định hướng để xây dựng nền tảng TMĐT PVI bền vững và tăng trưởng (2/2)</h2><span class="unit ac-reveal" style="--i:2">Góc nhìn phát triển dài hạn</span></div>
+    <div class="head"><div class="eyebrow ac-reveal">4.4. ĐỊNH HƯỚNG CỦA BAN HK&amp;KHDN</div><h2 class="s-title ac-reveal" style="--i:1">4 định hướng để xây dựng nền tảng TMĐT PVI bền vững và tăng trưởng (2/2)</h2><span class="unit ac-reveal" style="--i:2">Góc nhìn phát triển dài hạn</span></div>
     
     <div class="cards" style="gap:1rem">
       <div class="card card--bad ac-reveal" style="--i:3">
@@ -999,7 +964,7 @@ body{
 <!-- ===== S21 BÀI HỌC QUỐC TẾ ===== -->
 <section class="slide" data-title="Bài học Ping An">
   <div class="slide-content" style="overflow-y:auto;justify-content:flex-start"><div class="wrap">
-    <div class="head"><div class="eyebrow ac-reveal">4.3 · Phòng Thương mại điện tử</div><h2 class="s-title ac-reveal" style="--i:1">Bài học quốc tế - Hành trình chuyển đổi số của Ping An</h2></div>
+    <div class="head"><div class="eyebrow ac-reveal">4.4. ĐỊNH HƯỚNG CỦA BAN HK&amp;KHDN</div><h2 class="s-title ac-reveal" style="--i:1">Bài học quốc tế - Hành trình chuyển đổi số của Ping An</h2></div>
     
     <div class="grid2" style="align-items:stretch">
       <div class="card ac-reveal" style="--i:2">
