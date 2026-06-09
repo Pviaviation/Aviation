@@ -325,7 +325,7 @@ body{
 .hero-stage{ position:absolute; inset:0; z-index:0; overflow:hidden; background:#04162a; }
 /* the reference photo, with a slow Ken-Burns push toward the tower */
 .hero-stage__photo{ position:absolute; inset:-5%; width:110%; height:110%;
-  background-image:url("1780624473615_3504659696103963496_3504659696103963496_b92882459629cb269087bb8e63a541d6.jpg");
+  background-image:url("steps_to_PVI.png");
   background-size:cover; background-position:50% 40%; transform-origin:50% 36%;
   filter:saturate(1.08) contrast(1.05); animation:heroKen 32s ease-in-out infinite alternate; will-change:transform; }
 @keyframes heroKen{ 0%{ transform:scale(1.05) translateY(0); } 100%{ transform:scale(1.17) translateY(-2.2%); } }
@@ -446,10 +446,12 @@ body{
 }
 
 @media print {
-  html, body { height: auto !important; overflow: visible !important; scroll-snap-type: none !important; }
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { width: 1920px !important; height: 1080px !important; overflow: visible !important; scroll-snap-type: none !important; margin: 0 !important; padding: 0 !important; }
   body { background: #fff !important; }
   .slide { 
-    height: 100vh !important; 
+    width: 1920px !important;
+    height: 1080px !important; 
     page-break-after: always !important;
     page-break-inside: avoid !important;
     overflow: hidden !important; 
@@ -768,11 +770,11 @@ body{
 <section class="slide" data-title="TH 6T theo Phòng">
   <div class="slide-content"><div class="wrap">
     <div class="head"><div class="eyebrow ac-reveal">03 · Kế hoạch – Thực hiện 2026</div><h2 class="s-title ac-reveal" style="--i:1">Thực hiện 6T 2026 - theo Phòng &amp; cơ cấu Gốc / Tái</h2><span class="unit ac-reveal" style="--i:2">Đơn vị: triệu VND</span></div>
-    <div class="tbl-scroll ac-reveal" style="--i:3; margin-bottom:var(--content-gap); font-size:clamp(.9rem, 2vw, 1.15rem);">
+    <div class="tbl-scroll ac-reveal" style="--i:3; margin-bottom:var(--content-gap);">
       <table class="tbl" style="text-align:center;">
         <thead>
           <tr>
-            <th style="text-align:left; font-size:1.25em;">Phòng</th>
+            <th style="text-align:left;">Phòng</th>
             <th style="text-align:center;">BH GỐC</th>
             <th style="text-align:center;">NHẬN TBH</th>
             <th style="text-align:center;">Tổng</th>
@@ -780,28 +782,28 @@ body{
         </thead>
         <tbody>
           <tr>
-            <td style="text-align:left; font-weight:600; color:var(--pvi-blue); font-size:1.3em;">PTKD</td>
-            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700); font-size:1.4em;">262.593</div><div style="font-size:0.85em; color:var(--ink-500);">39,8%</div></td>
-            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700); font-size:1.4em;">396.823</div><div style="font-size:0.85em; color:var(--ink-500);">60,2%</div></td>
-            <td style="text-align:center;"><div style="font-weight:700; color:var(--ink-900); font-size:1.4em;">659.416</div><div class="pos" style="font-size:0.85em; font-weight:600;">135,1% KH</div></td>
+            <td style="text-align:left; font-weight:600; color:var(--pvi-blue);">PTKD</td>
+            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700);">262.593</div><div style="font-size:0.85em; color:var(--ink-500);">39,8%</div></td>
+            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700);">396.823</div><div style="font-size:0.85em; color:var(--ink-500);">60,2%</div></td>
+            <td style="text-align:center;"><div style="font-weight:700; color:var(--ink-900);">659.416</div><div class="pos" style="font-size:0.85em; font-weight:600;">135,1% KH</div></td>
           </tr>
           <tr>
-            <td style="text-align:left; font-weight:600; color:var(--pvi-blue); font-size:1.3em;">HKKG</td>
-            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700); font-size:1.4em;">154.915</div><div style="font-size:0.85em; color:var(--ink-500);">68,2%</div></td>
-            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700); font-size:1.4em;">72.306</div><div style="font-size:0.85em; color:var(--ink-500);">31,8%</div></td>
-            <td style="text-align:center;"><div style="font-weight:700; color:var(--ink-900); font-size:1.4em;">227.221</div><div class="pos" style="font-size:0.85em; font-weight:600;">102,4% KH</div></td>
+            <td style="text-align:left; font-weight:600; color:var(--pvi-blue);">HKKG</td>
+            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700);">154.915</div><div style="font-size:0.85em; color:var(--ink-500);">68,2%</div></td>
+            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700);">72.306</div><div style="font-size:0.85em; color:var(--ink-500);">31,8%</div></td>
+            <td style="text-align:center;"><div style="font-weight:700; color:var(--ink-900);">227.221</div><div class="pos" style="font-size:0.85em; font-weight:600;">102,4% KH</div></td>
           </tr>
           <tr>
-            <td style="text-align:left; font-weight:600; color:var(--pvi-blue); font-size:1.3em;">TMĐT</td>
-            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700); font-size:1.4em;">26.221</div><div style="font-size:0.85em; color:var(--ink-500);">100%</div></td>
-            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700); font-size:1.4em;">-</div><div style="font-size:0.85em; color:var(--ink-500);">-</div></td>
-            <td style="text-align:center;"><div style="font-weight:700; color:var(--ink-900); font-size:1.4em;">26.221</div><div class="pos" style="font-size:0.85em; font-weight:600;">115,7% KH</div></td>
+            <td style="text-align:left; font-weight:600; color:var(--pvi-blue);">TMĐT</td>
+            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700);">26.221</div><div style="font-size:0.85em; color:var(--ink-500);">100%</div></td>
+            <td style="text-align:center;"><div style="font-weight:600; color:var(--ink-700);">-</div><div style="font-size:0.85em; color:var(--ink-500);">-</div></td>
+            <td style="text-align:center;"><div style="font-weight:700; color:var(--ink-900);">26.221</div><div class="pos" style="font-size:0.85em; font-weight:600;">115,7% KH</div></td>
           </tr>
           <tr class="total">
-            <td style="text-align:left; font-weight:700; color:var(--pvi-blue); font-size:1.4em;">TỔNG BAN</td>
-            <td style="text-align:center;"><div style="font-weight:700; color:var(--pvi-blue); font-size:1.5em;">443.729</div><div style="font-size:0.85em; color:var(--ink-500);">48,6%</div></td>
-            <td style="text-align:center;"><div style="font-weight:700; color:var(--pvi-blue); font-size:1.5em;">469.129</div><div style="font-size:0.85em; color:var(--ink-500);">51,4%</div></td>
-            <td style="text-align:center;"><div style="font-weight:800; color:var(--pvi-blue); font-size:1.5em;">912.858</div><div class="pos" style="font-size:0.9em; font-weight:700;">124,6% KH</div></td>
+            <td style="text-align:left; font-weight:700; color:var(--pvi-blue);">TỔNG BAN</td>
+            <td style="text-align:center;"><div style="font-weight:700; color:var(--pvi-blue);">443.729</div><div style="font-size:0.85em; color:var(--ink-500);">48,6%</div></td>
+            <td style="text-align:center;"><div style="font-weight:700; color:var(--pvi-blue);">469.129</div><div style="font-size:0.85em; color:var(--ink-500);">51,4%</div></td>
+            <td style="text-align:center;"><div style="font-weight:800; color:var(--pvi-blue);">912.858</div><div class="pos" style="font-size:0.9em; font-weight:700;">124,6% KH</div></td>
           </tr>
         </tbody>
       </table>
@@ -1073,7 +1075,7 @@ body{
     
     <div class="grid2" style="align-items:stretch">
       <div class="card ac-reveal" style="--i:2">
-        <h4 style="margin-bottom:.8rem;color:var(--pvi-indigo)">Trước vs Sau chuyển đổi</h4>
+        <h4 style="margin-bottom:.8rem;color:var(--pvi-indigo)">Trước và Sau khi chuyển đổi</h4>
         <table class="tbl">
           <thead><tr><th>Trước chuyển đổi</th><th>Sau chuyển đổi</th></tr></thead>
           <tbody>
