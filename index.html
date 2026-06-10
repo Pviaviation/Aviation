@@ -38,7 +38,7 @@
   --ac-ease:cubic-bezier(.22,.8,.18,1); --ac-ease-bounce:cubic-bezier(.34,1.56,.64,1);
   --ac-dur:.8s; --ac-stagger:80ms;
 
-  --rail:268px;
+  --rail:210px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -232,7 +232,7 @@ body{
 /* hero */
 .hero{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:.5rem; }
 .hero__kicker{ font-family:var(--font-display); font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--pvi-cyan); font-size:clamp(.7rem,1.4vw,1rem); }
-.hero__word{ font-family:var(--font-display); font-weight:800; line-height:.9; letter-spacing:-.02em; font-size:clamp(3.6rem,15vw,11rem);
+.hero__word{ font-family:var(--font-display); font-weight:800; line-height:.9; letter-spacing:-.02em; font-size:clamp(3rem,10vw,7.5rem);
   background:linear-gradient(120deg,var(--pvi-indigo) 0%,var(--pvi-blue) 45%,var(--pvi-cyan) 70%,var(--pvi-blue) 100%); background-size:220% 100%;
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .ac-on .hero__word{ animation:heroIn 1.2s var(--ac-ease-bounce) .08s both, shine 6s linear 1.3s infinite; }
@@ -939,7 +939,7 @@ body{
 <section class="slide" data-title="Vai trò TMĐT">
   <div class="slide-content" style="overflow-y:auto;justify-content:flex-start"><div class="wrap">
     <div class="head"><div class="eyebrow ac-reveal">03 - Định hướng của Ban</div><h2 class="s-title ac-reveal" style="--i:1">Vai trò của TMĐT trong chiến lược phát triển của PVI</h2></div>
-    <div class="steps">
+    <div class="steps" style="grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));">
       <div class="step ac-reveal" style="--i:2"><div class="step__n">1</div><div><h4>Động lực tăng trưởng mới</h4><p>Giúp PVI mở rộng nguồn doanh thu ngoài các kênh đại lý, môi giới và khách hàng doanh nghiệp truyền thống.</p></div></div>
       <div class="step ac-reveal" style="--i:3"><div class="step__n">2</div><div><h4>Công cụ tiếp cận khách hàng quy mô lớn</h4><p>Cho phép tiếp cận hàng triệu khách hàng thông qua các hệ sinh thái số như ngân hàng, viễn thông, hàng không, bán lẻ và dịch vụ công với chi phí tối ưu.</p></div></div>
       <div class="step ac-reveal" style="--i:4"><div class="step__n">3</div><div><h4>Nền tảng phát triển sản phẩm thế hệ mới</h4><p>Tạo điều kiện triển khai các mô hình: Bảo hiểm nhúng (Embedded Insurance), Cyber Insurance, UBI, Weather index Insurance.</p></div></div>
