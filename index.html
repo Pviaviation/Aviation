@@ -284,7 +284,7 @@ body{
   .s-title{ font-size:clamp(1.4rem,6.6vw,2.1rem); }
 
   /* collapse every multi-column layout to a single column */
-  .kpis--4,.kpis--3,.kpis--2,.cards--3,.cards--2,.grid2{ grid-template-columns:1fr!important; }
+  .kpis--4,.kpis--3,.kpis--2,.cards--3,.cards--2,.grid2,.cards,.toc{ grid-template-columns:1fr!important; }
   .donut-wrap{ flex-direction:column; text-align:center; gap:1rem; }
   .donut{ width:clamp(150px,48vw,210px); }
 
@@ -441,8 +441,8 @@ body{
 .ic-float { display: inline-block; animation: floatIc 2s ease-in-out infinite; }
 
 @media (max-width: 850px) {
-  .cards[style*="2fr 1fr"], .cards--3, .cards--2, .grid2 { grid-template-columns: 1fr !important; }
-  .cards[style*="2fr 1fr"] > div { grid-row: auto !important; }
+  .cards, .cards[style*="2fr 1fr"], .cards--3, .cards--2, .grid2, .toc { grid-template-columns: 1fr !important; }
+  .cards > div { grid-row: auto !important; }
 }
 
 @media print {
